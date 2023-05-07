@@ -111,99 +111,6 @@ public class BarnSettings extends AppCompatActivity {
             } else {
                 switchCompat3.setChecked(false);
             }
-
-            switchCompat2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                    if(isChecked) {
-                        mtextfield2.setVisibility(View.VISIBLE);
-                        aswitchvalue2 = "1";
-                        new CountDownTimer(30000, 1000) {
-                            @Override
-                            public void onTick(long millisUntilFinished) {
-                                mtextfield2.setText(String.format("00:%02d", millisUntilFinished / 1000));
-                            }
-
-                            @Override
-                            public void onFinish() {
-                                mtextfield2.setText("done!");
-                                mtextfield2.setVisibility(View.INVISIBLE);
-                            }
-                        }.start();
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                aswitchvalue2 = "0";
-                                switchCompat2.setChecked(false);
-                                Insertdatatobase();
-                            }
-                        }, 30000);
-                    } else {
-                        aswitchvalue3 = "0";
-                    }
-                }
-            });
-            buttonsend = findViewById(R.id.buttongo);
-            radioGroup = findViewById(R.id.radio);
-            seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                @Override
-                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    textView2.setText(String.format("%d℃", progress));
-                    settingtemp = String.format("%d", progress);
-                }
-
-                @Override
-                public void onStartTrackingTouch(SeekBar seekBar) {
-
-                }
-
-                @Override
-                public void onStopTrackingTouch(SeekBar seekBar) {
-
-                }
-            });
-            seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                @Override
-                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    textView3.setText(String.format("%d", progress));
-                    settinghum = String.format("%d", progress);
-                }
-
-                @Override
-                public void onStartTrackingTouch(SeekBar seekBar) {
-
-                }
-
-                @Override
-                public void onStopTrackingTouch(SeekBar seekBar) {
-
-                }
-            });
-            radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(RadioGroup group, int checkedId) {
-                    switch (checkedId) {
-                        case R.id.radio1:
-                            Toast.makeText(BarnSettings.this, "3", Toast.LENGTH_SHORT).show();
-                            settingfood = "3";
-                            break;
-                        case R.id.radio2:
-                            Toast.makeText(BarnSettings.this, "2", Toast.LENGTH_SHORT).show();
-                            settingfood = "2";
-                            break;
-                        case R.id.radio3:
-                            Toast.makeText(BarnSettings.this, "1", Toast.LENGTH_SHORT).show();
-                            settingfood = "1";
-                            break;
-                    }
-                }
-            });
-            buttonsend.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
@@ -211,6 +118,118 @@ public class BarnSettings extends AppCompatActivity {
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
+        switchCompat2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(isChecked) {
+                    mtextfield2.setVisibility(View.VISIBLE);
+                    aswitchvalue2 = "1";
+                    new CountDownTimer(30000, 1000) {
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            mtextfield2.setText(String.format("00:%02d", millisUntilFinished / 1000));
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            mtextfield2.setText("done!");
+                            mtextfield2.setVisibility(View.INVISIBLE);
+                        }
+                    }.start();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            aswitchvalue2 = "0";
+                            switchCompat2.setChecked(false);
+                            Insertdatatobase();
+                        }
+                    }, 30000);
+                } else {
+                    aswitchvalue3 = "0";
+                }
+            }
+        });
+        buttonsend = findViewById(R.id.buttongo);
+        radioGroup = findViewById(R.id.radio);
+        seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                textView2.setText(String.format("%d℃", progress));
+                settingtemp = String.format("%d", progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                textView3.setText(String.format("%d", progress));
+                settinghum = String.format("%d", progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.radio1:
+                        Toast.makeText(BarnSettings.this, "3", Toast.LENGTH_SHORT).show();
+                        settingfood = "3";
+                        break;
+                    case R.id.radio2:
+                        Toast.makeText(BarnSettings.this, "2", Toast.LENGTH_SHORT).show();
+                        settingfood = "2";
+                        break;
+                    case R.id.radio3:
+                        Toast.makeText(BarnSettings.this, "1", Toast.LENGTH_SHORT).show();
+                        settingfood = "1";
+                        break;
+                }
+            }
+        });
+        buttonsend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InserttoDB inserttoDB = new InserttoDB();
+                int settingho = Integer.parseInt(settingtemp);
+                int settingshum = Integer.parseInt(settinghum);
+
+                for(int i = 0; i < arrayList.size(); i++) {
+                    if(settingshum < Double.parseDouble(arrayList.get(i).getHumidity())){
+                        switchCompat.setChecked(true);
+                        aswitchvalue = "1";
+                    } else {
+                        aswitchvalue = "0";
+                        switchCompat.setChecked(false);
+                    }
+                    if(settingho < Double.parseDouble(arrayList.get(i).getTemperature())){
+                        switchCompat.setChecked(true);
+                        aswitchvalue = "1";
+                    } else {
+                        aswitchvalue = "0";
+                        switchCompat.setChecked(false);
+                    }
+                    inserttoDB.execute(settingtemp, settinghum, settingfood);
+                }
+            }
+        });
     }
 
     public void switch_on_button_fan_water_(View view) {

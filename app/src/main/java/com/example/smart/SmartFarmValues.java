@@ -4,14 +4,14 @@ public class SmartFarmValues {
     private String Temperature;
     private String Humidity;
     private String Water;
-    private String Solid;
+    private String Soild;
     private String Co2gas;
 
-    public SmartFarmValues(String temperature, String humidity, String water, String solid, String co2gas) {
+    public SmartFarmValues(String temperature, String humidity, String water, String soild, String co2gas) {
         Temperature = temperature;
         Humidity = humidity;
         Water = water;
-        Solid = solid;
+        Soild = soild;
         Co2gas = co2gas;
     }
 
@@ -39,12 +39,12 @@ public class SmartFarmValues {
         Water = water;
     }
 
-    public String getSolid() {
-        return Solid;
+    public String getSoild() {
+        return Soild;
     }
 
-    public void setSolid(String solid) {
-        Solid = solid;
+    public void setSoild(String soild) {
+        Soild = soild;
     }
 
     public String getCo2gas() {

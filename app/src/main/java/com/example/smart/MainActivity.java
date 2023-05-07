@@ -35,5 +35,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        buttonfarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this, SmartFarm.class);
+                startActivity(intent1);
+            }
+        });
     }
 }
